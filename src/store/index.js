@@ -60,6 +60,9 @@ export default createStore({
       commit('assignCity', payload.name);
     },
     assignWeather({ commit }, payload) {
+      // removing first result from daily weather
+      // since it's the same as current
+      payload.daily.shift();
       commit('assignWeeklyWeather', payload.daily);
       commit('assignCurrentWeather', payload.current);
       commit('assignTimezone', payload.timezone);

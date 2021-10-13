@@ -56,16 +56,27 @@ body{
   margin: 0;
 }
 main{
-    font-family: 'Montserrat', sans-serif;
-  #home{
-          position: absolute;
-          top: 5rem;
-          left: 3rem;
-          i{
-            font-size: 4rem;
-          }
-
+  font-family: 'Montserrat', sans-serif;
   padding: 3rem;
+    #home-btn{
+      position: absolute;
+      transition: linear 0.2s;
+      max-width: 3rem;
+      top: 50px;
+      left: 30px;
+      &:hover{
+      transform: translateY(5px) scale(.95);
+      background-color: darken(white,30%);
+    }
+      &:visited{
+        color: white;
+
+      }
+      i{
+        font-size: 2rem;
+      }
+    }
+
   h1{
       margin-bottom: 2rem;
     }
@@ -91,10 +102,10 @@ main{
           font-size: .95rem;
         }
       }
-      img{
-        width: 5rem;
-      }
-      
+        img{
+          width: 5rem;
+        }
+
       }
     }
   }
@@ -110,12 +121,6 @@ main{
     img{
       width: 7rem;
     }
-    #home{
-      position: absolute;
-      left: 3rem;
-      top: 3rem;
-      font-size: 2.5rem;
-    }
-  }
+
 }
 </style>

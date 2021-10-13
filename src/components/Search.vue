@@ -97,9 +97,14 @@ main{
   button{
     @extend input;
     width: unset;
+    transition: linear 0.2s;
     padding: 0.4rem;
     i{
       margin-left: 0.8rem;
+    }
+    &:hover{
+      transform: translateY(5px) scale(.95);
+      background-color: darken(white,30%);
     }
   }
 }
