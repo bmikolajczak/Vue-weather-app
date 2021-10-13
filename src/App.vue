@@ -1,10 +1,6 @@
 <template>
-  <transition mode="in-out"
-  enter-active-class="animate__animated animate__fadeInRightBig"
-  leave-active-class="animate__animated animate__fadeOutDown"
-  >
+
     <router-view></router-view>
-  </transition>
   <!-- <search />
   <weather /> -->
 

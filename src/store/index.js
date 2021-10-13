@@ -8,6 +8,7 @@ export default createStore({
     country: '',
     timezone: '',
     weeklyWeather: '',
+    currentWeather: '',
 
   },
   mutations: {
@@ -27,7 +28,24 @@ export default createStore({
       state.timezone = tz;
     },
     assignWeeklyWeather(state, weather) {
+      weather.forEach((elem) => {
+        const time = new Date(elem.dt * 1000);
+        /*eslint-disable */
+        elem.dt = time.toLocaleDateString('en-GB', { weekday: 'long' });
+        /* eslint-enable */
+      });
+
       state.weeklyWeather = weather;
+    },
+    assignCurrentWeather(state, cw) {
+      const time = new Date(cw.dt * 1000);
+      /*eslint-disable */
+      cw.dt = time.toLocaleDateString('en-GB', { weekday: 'long' });
+      /* eslint-enable */
+      state.currentWeather = cw;
+    },
+    assignTimezone(state, tz) {
+      state.timezone = tz;
     },
   },
   getters: {
@@ -43,6 +61,8 @@ export default createStore({
     },
     assignWeather({ commit }, payload) {
       commit('assignWeeklyWeather', payload.daily);
+      commit('assignCurrentWeather', payload.current);
+      commit('assignTimezone', payload.timezone);
     },
   },
 });
