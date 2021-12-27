@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main id='search'>
     <h1>Check the weather for your city!</h1>
     <div class="input-div">
       <input type="text" v-model="city" placeholder="enter a city name"
@@ -32,13 +32,13 @@ export default {
       axios
         .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.api_k}`)
         .then((response) => {
-          // console.log('pierwszy call', response);
+          console.log('pierwszy call', response);
           this.$store.dispatch('assignCityInfo', response.data);
 
           axios
             .get(`https://api.openweathermap.org/data/2.5/onecall?lat=${this.showLat}&lon=${this.showLon}&exclude=minutely,hourly,alerts&units=metric&appid=${this.api_k}`)
             .then((res) => {
-              // console.log('koordynaty', res);
+              console.log('koordynaty', res);
               this.$store.dispatch('assignWeather', res.data);
               this.time_zone = res.data.timezone;
               this.image = `http://openweathermap.org/img/wn/${res.data.current.weather[0].icon}@2x.png`;
@@ -67,7 +67,6 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   padding: 2rem;
   color: white;
   >*{
@@ -80,6 +79,10 @@ main{
     font-size: 4rem;
     margin-bottom: 4rem;
   }
+}
+#search{
+  height: 100vh;
+
 }
 .input-div{
   font-family: $font-para, sans-serif;
